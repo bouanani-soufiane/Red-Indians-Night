@@ -6,7 +6,7 @@
 
 ### Roles and Permissions
 
-### Admin : 
+### <u> Admin :  </u>
 
 **Login:** Admin can log in using JWT authentication. 
 
@@ -30,13 +30,13 @@
 **Blog Management:** Admin can manage blog posts.
 * `````   NB _Events are hidden by default, with an option to make them live._`````
 
-### Organisateur (Organizer) :
+### <u>Organisateur (Organizer) : </u>
 
 **Login:** Organizer can log in using JWT, Google, or Facebook authentication.
 
 **Reservation Management:** Organizer can accept or refuse reservations.
 
-### User :
+### <u>User : </u>
 
 **Login:** User can log in using JWT, Google, or Facebook authentication.
 
