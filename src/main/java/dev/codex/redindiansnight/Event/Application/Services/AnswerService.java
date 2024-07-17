@@ -4,5 +4,9 @@ import dev.codex.redindiansnight.Common.Contracts.CrudService;
 import dev.codex.redindiansnight.Event.Application.Dtos.Requests.AnswerRequest;
 import dev.codex.redindiansnight.Event.Domain.Entities.Answer;
 
-public interface AnswerService extends CrudService<Answer, Long, AnswerRequest> {
+import java.util.List;
+
+public interface AnswerService {
+    List<Answer> findByEventQuestionId(Long eventQuestionId);
+    Answer create(AnswerRequest request);
 }
