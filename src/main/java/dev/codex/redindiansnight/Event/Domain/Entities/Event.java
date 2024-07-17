@@ -23,7 +23,7 @@ public class Event {
 
     private String description;
 
-    private String price;
+    private Long price;
 
     private String location;
 
@@ -41,4 +41,15 @@ public class Event {
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
     private List<EventQuestion> eventQuestions;
+
+    public Event(String title, String description, Long price, String location, Date startDate, Date endDate, Long numberOfAttendees, Boolean isLive) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.location = location;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.numberOfAttendees = numberOfAttendees;
+        this.isLive = isLive;
+    }
 }

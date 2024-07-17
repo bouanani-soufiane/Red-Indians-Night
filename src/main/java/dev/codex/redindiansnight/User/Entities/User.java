@@ -38,7 +38,7 @@ public class User {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<UserHobbies> userHobbies;
-    
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Booking> bookings;
