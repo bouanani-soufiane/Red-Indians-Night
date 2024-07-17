@@ -29,7 +29,7 @@ public class Question {
     @Enumerated(EnumType.STRING)
     private AnswerType answerType;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "question")
     @JsonIgnore
-    private List<Event> events;
+    private List<EventQuestion> eventQuestions;
 }

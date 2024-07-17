@@ -1,24 +1,26 @@
 package dev.codex.redindiansnight.Event.Domain.Entities;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ManyToAny;
 
 @Setter
 @Getter
 @NoArgsConstructor
 
 @Entity
-@Table(name = "answers")
-public class Answer {
+@Table(name = "event_questions")
+public class EventQuestion {
     @Id
     @GeneratedValue
     private Long id;
 
-    private String answer;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Event event;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "event_question_id")
-    private EventQuestion eventQuestion;
+    private Question question;
 }

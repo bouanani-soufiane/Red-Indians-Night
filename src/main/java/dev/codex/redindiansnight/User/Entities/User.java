@@ -30,15 +30,15 @@ public class User {
 
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users")
-    private List<Hobby> hobbies;
-
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Role role;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users")
     private List<Permission> permissions;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private List<UserHobbies> userHobbies;
+    
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Booking> bookings;

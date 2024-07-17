@@ -24,4 +24,7 @@ public class HobbyDetails {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Hobby hobby;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private UserHobbies userHobbies;
 }

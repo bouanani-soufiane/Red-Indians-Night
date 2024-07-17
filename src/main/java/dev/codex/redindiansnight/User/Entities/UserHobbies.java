@@ -1,4 +1,5 @@
-package dev.codex.redindiansnight.Event.Domain.Entities;
+package dev.codex.redindiansnight.User.Entities;
+
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,15 +11,15 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "answers")
-public class Answer {
+@Table(name = "user_hobbies")
+public class UserHobbies {
     @Id
     @GeneratedValue
     private Long id;
 
-    private String answer;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private User user;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "event_question_id")
-    private EventQuestion eventQuestion;
+    private Hobby hobby;
 }

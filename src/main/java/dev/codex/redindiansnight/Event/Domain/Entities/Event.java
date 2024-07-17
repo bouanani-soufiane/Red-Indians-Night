@@ -39,6 +39,6 @@ public class Event {
     @Column(name = "is_live")
     private Boolean isLive = false;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "events")
-    private List<Question> questions;
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+    private List<EventQuestion> eventQuestions;
 }

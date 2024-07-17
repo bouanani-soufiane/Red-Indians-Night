@@ -23,9 +23,9 @@ public class Hobby {
 
     private String name;
 
-    @ManyToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "hobby")
     @JsonIgnore
-    private List<User> users;
+    private List<UserHobbies> userHobbies;
 
     @OneToMany(mappedBy = "hobby", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HobbyDetails> hobbyDetails;
