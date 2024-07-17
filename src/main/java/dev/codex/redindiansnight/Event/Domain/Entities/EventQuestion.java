@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ManyToAny;
 
 @Setter
 @Getter
@@ -23,4 +22,9 @@ public class EventQuestion {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Question question;
+
+    public EventQuestion(Event event, Question question) {
+        this.event = event;
+        this.question = question;
+    }
 }
