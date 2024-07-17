@@ -10,12 +10,13 @@ import dev.codex.redindiansnight.Event.Domain.Exceptions.EventNotFoundException;
 import dev.codex.redindiansnight.Event.Infrastructure.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class EventServiceImpl implements EventService {
+class EventServiceImpl implements EventService {
     private final EventRepository repository;
     private final QuestionService questionService;
     private final EventQuestionService eventQuestionService;
@@ -32,6 +33,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @Transactional
     public Event create(EventRequest request) {
         final List<Question> questions = questionService.findAllById(request.questionIds());
         questions.addAll(questionService.createAll(request.newQuestions()));
@@ -52,6 +54,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @Transactional
     public Event update(Long id, EventRequest request) {
         final Event event = repository.findById(id)
                 .orElseThrow(() -> new EventNotFoundException(id));
@@ -68,10 +71,10 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         if (!repository.existsById(id))
             throw new EventNotFoundException(id);
         repository.deleteById(id);
     }
-
 }

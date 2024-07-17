@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class QuestionServiceImpl implements QuestionService {
+class QuestionServiceImpl implements QuestionService {
     private final QuestionRepository repository;
 
     @Override
@@ -27,6 +27,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    @Transactional
     public List<Question> createAll(List<QuestionRequest> questionRequests) {
         final List<Question> questions = questionRequests.stream()
                 .map(questionRequest -> new Question(
@@ -71,6 +72,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         if (repository.existsById(id))
             throw new QuestionNotFoundNotFoundException(id);

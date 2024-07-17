@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AnswerServiceImpl implements AnswerService {
+class AnswerServiceImpl implements AnswerService {
     private final AnswerRepository repository;
     private final EventQuestionService eventQuestionService;
 
