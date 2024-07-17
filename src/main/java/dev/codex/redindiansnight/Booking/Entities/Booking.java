@@ -2,7 +2,7 @@ package dev.codex.redindiansnight.Booking.Entities;
 
 import dev.codex.redindiansnight.Booking.ObjectValues.BookingStatus;
 import dev.codex.redindiansnight.Event.Domain.Entities.Event;
-import dev.codex.redindiansnight.User.Entities.User;
+import dev.codex.redindiansnight.User.Domain.Entities.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
