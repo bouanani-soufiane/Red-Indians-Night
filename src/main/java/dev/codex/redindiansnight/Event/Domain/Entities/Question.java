@@ -30,11 +30,6 @@ public class Question {
     private AnswerType answerType;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "event_questions",
-            joinColumns = @JoinColumn(name = "question_id"),
-            inverseJoinColumns = @JoinColumn(name = "event_id")
-    )
     @JsonIgnore
     private List<Event> events;
 }

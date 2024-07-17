@@ -24,11 +24,6 @@ public class Permission {
     private String name;
 
     @ManyToMany
-    @JoinTable(
-            name = "permission_user",
-            joinColumns = @JoinColumn(name = "permission_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
     @JsonIgnore
     private List<User> users;
 }

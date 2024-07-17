@@ -36,6 +36,7 @@ public class Event {
     @Column(name = "number_of_attendees")
     private Long numberOfAttendees;
 
+    @Column(name = "is_live")
     private Boolean isLive = false;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "events")

@@ -34,7 +34,6 @@ public class User {
     private List<Hobby> hobbies;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_id")
     private Role role;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users")

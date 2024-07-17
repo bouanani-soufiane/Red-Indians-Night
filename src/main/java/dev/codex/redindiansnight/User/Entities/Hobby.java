@@ -24,11 +24,6 @@ public class Hobby {
     private String name;
 
     @ManyToMany
-    @JoinTable(
-            name = "hobby_user",
-            joinColumns = @JoinColumn(name = "hobby_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
     @JsonIgnore
     private List<User> users;
 

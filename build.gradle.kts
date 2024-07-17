@@ -30,6 +30,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.modulith:spring-modulith-starter-core")
     implementation("org.springframework.modulith:spring-modulith-starter-jpa")
+    implementation ("org.springframework.boot:spring-boot-starter-validation:3.3.1")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.postgresql:postgresql")

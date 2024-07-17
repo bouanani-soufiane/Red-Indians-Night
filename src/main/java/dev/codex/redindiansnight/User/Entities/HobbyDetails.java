@@ -22,7 +22,6 @@ public class HobbyDetails {
     private String text;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "hobby_id")
     @JsonIgnore
     private Hobby hobby;
 }
