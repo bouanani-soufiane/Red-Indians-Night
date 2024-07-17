@@ -1,5 +1,6 @@
 package dev.codex.redindiansnight.Event.Domain.Entities;
 
+import dev.codex.redindiansnight.Event.Application.Dtos.Requests.AnswerRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,9 @@ public class Answer {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "event_question_id")
     private EventQuestion eventQuestion;
+
+    public Answer (String answer, EventQuestion eventQuestion) {
+        this.answer = answer;
+        this.eventQuestion = eventQuestion;
+    }
 }
