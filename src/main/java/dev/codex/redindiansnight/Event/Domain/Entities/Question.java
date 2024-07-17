@@ -1,5 +1,6 @@
 package dev.codex.redindiansnight.Event.Domain.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.codex.redindiansnight.Event.Domain.ObjectValues.AnswerType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,6 +29,12 @@ public class Question {
     @Enumerated(EnumType.STRING)
     private AnswerType answerType;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "questions")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "event_questions",
+            joinColumns = @JoinColumn(name = "question_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    @JsonIgnore
     private List<Event> events;
 }
