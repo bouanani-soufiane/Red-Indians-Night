@@ -32,7 +32,11 @@ public class Blog {
     @OneToMany(mappedBy = "blog", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Comment> commentList;
 
-
-
+    public Blog(String title, String description, String content, User author) {
+        this.title = title;
+        this.description = description;
+        this.content = content;
+        this.author = author;
+    }
 
 }

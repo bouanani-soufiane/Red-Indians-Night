@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "firstName": "souf",
+    "lastName": "bou",
+    "email": "ousd@ae.com",
+    "password": "123445FDFSF",
+    "role": {
+      "id": 1,
+      "name": null
+    },
+    "permissions": [],
+    "userHobbies": [],
+    "blogs": [],
+    "commentList": []
+  }
+]
