@@ -1,7 +1,7 @@
 package dev.codex.redindiansnight.User.Domain.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import dev.codex.redindiansnight.Booking.Entities.Booking;
+import dev.codex.redindiansnight.Booking.Domain.Entities.Booking;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

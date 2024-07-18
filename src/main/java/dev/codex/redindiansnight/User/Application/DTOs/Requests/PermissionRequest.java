@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
- * DTO for {@link dev.codex.cinestar.User.Domain.Entities.Permission}
+ * DTO for {@link dev.codex.redindiansnight.User.Domain.Entities.Permission}
  */
 public record PermissionRequest(
         @NotBlank
