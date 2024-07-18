@@ -1,10 +1,12 @@
 package dev.codex.redindiansnight.Blog.Domain.Entities;
 
-import dev.codex.redindiansnight.User.Entities.User;
+import dev.codex.redindiansnight.User.Domain.Entities.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Setter
 @Getter
@@ -18,11 +20,19 @@ public class Blog {
     private Long id;
 
     private String title;
+
     private String description;
+
     private String content;
 
     @ManyToOne(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User author;
+
+    @OneToMany(mappedBy = "blog", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Comment> commentList;
+
+
+
 
 }
