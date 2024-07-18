@@ -6,6 +6,7 @@ import dev.codex.redindiansnight.Blog.Domain.Entities.Blog;
 import dev.codex.redindiansnight.Blog.Domain.Exceptions.BlogNotFoundException;
 import dev.codex.redindiansnight.Blog.Domain.Exceptions.ForbiddenBlogAccessException;
 import dev.codex.redindiansnight.Blog.Infrastructure.BlogRepository;
+import dev.codex.redindiansnight.Event.Domain.Exceptions.QuestionNotFoundNotFoundException;
 import dev.codex.redindiansnight.User.Application.Services.UserService;
 import dev.codex.redindiansnight.User.Domain.Entities.User;
 import dev.codex.redindiansnight.User.Domain.Exceptions.UserNotFoundException;
@@ -16,7 +17,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-
 public class BlogServiceImpl implements BlogService {
 
 
@@ -61,7 +61,9 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public void delete ( Long aLong ) {
-
+    public void delete ( Long id ) {
+        if (!repository.existsById(id))
+            throw new BlogNotFoundException(id);
+        repository.deleteById(id);
     }
 }
