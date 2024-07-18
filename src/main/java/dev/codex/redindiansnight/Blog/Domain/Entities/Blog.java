@@ -25,7 +25,7 @@ public class Blog {
 
     private String content;
 
-    @ManyToOne(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
 
