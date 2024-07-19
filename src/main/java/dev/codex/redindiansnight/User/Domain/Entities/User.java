@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(unique = true)
     private String email;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -38,6 +40,9 @@ public class User implements UserDetails {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Role role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Token> tokens = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users")
     private List<Permission> permissions;
@@ -56,6 +61,14 @@ public class User implements UserDetails {
         this.password = password;
         this.role = role;
         this.permissions = permissions;
+    }
+
+    public User(String email, String firstName, String lastName, String password, Role role) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.role = role;
     }
 
     @Override
@@ -88,5 +101,10 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @PreRemove
+    private void preRemove() {
+        tokens.forEach(token -> token.setUser(null));
     }
 }

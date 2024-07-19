@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * DTO for {@link dev.codex.cinestar.User.Domain.Entities.User}
+ * DTO for {@link dev.codex.redindiansnight.User.Domain.Entities.User}
  */
 public record UserRequest(
         @NotBlank
@@ -29,7 +29,6 @@ public record UserRequest(
         @NotNull
         Long roleId,
 
-        @NotNull
         List<Long> permissionIds
 ) implements Serializable {
 }

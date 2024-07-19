@@ -1,6 +1,8 @@
 package dev.codex.redindiansnight.Common.Exceptions;
 
 import dev.codex.redindiansnight.Common.Models.ErrorResponse;
+import jakarta.validation.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,5 +33,27 @@ public class GlobalRequestValidationHandler {
         );
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+        String message = "A data integrity error occurred. Please check your input.";
+        Map<String, String> errors = new HashMap<>();
+
+        if (ex.getCause() instanceof ConstraintViolationException) {
+            ConstraintViolationException cve = (ConstraintViolationException) ex.getCause();
+            if (cve.getConstraintViolations() != null && cve.getConstraintViolations().equals("users_email_key")) {
+                message = "Email already exists.";
+                errors.put("email", "This email is already registered.");
+            }
+        }
+
+        final ErrorResponse response = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                message,
+                errors
+        );
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 }

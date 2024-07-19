@@ -1,6 +1,7 @@
 package dev.codex.redindiansnight.User.Infrastructure;
 
 import dev.codex.redindiansnight.User.Domain.Entities.Token;
+import dev.codex.redindiansnight.User.Domain.Entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -15,6 +16,8 @@ public interface TokenRepository extends JpaRepository<Token, Integer> {
             where u.id = :id and (t.expired = false or t.revoked = false)\s
             """)
     List<Token> findAllValidTokenByUser(Integer id);
+
+    void deleteAllByUser(User user);
 
     Optional<Token> findByToken(String token);
 }

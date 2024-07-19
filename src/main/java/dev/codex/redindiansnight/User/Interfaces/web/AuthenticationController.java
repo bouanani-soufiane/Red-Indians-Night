@@ -3,6 +3,7 @@ package dev.codex.redindiansnight.User.Interfaces.web;
 import dev.codex.redindiansnight.User.Application.DTOs.Requests.Authentication.AuthenticationRequest;
 import dev.codex.redindiansnight.User.Application.DTOs.Requests.Authentication.AuthenticationResponse;
 import dev.codex.redindiansnight.User.Application.DTOs.Requests.Authentication.RegisterRequest;
+import dev.codex.redindiansnight.User.Application.DTOs.Requests.UserRequest;
 import dev.codex.redindiansnight.User.Application.Services.Authentication.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

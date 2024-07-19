@@ -1,16 +1,16 @@
 package dev.codex.redindiansnight.User.Application.Services.Authentication;
 
+import dev.codex.redindiansnight.User.Domain.Entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.security.Key;
+import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +19,11 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-  @Value("${application.security.jwt.secret-key}")
+  @Value("${app.security.jwt.secret-key}")
   private String secretKey;
-  @Value("${application.security.jwt.expiration}")
+  @Value("${app.security.jwt.expiration}")
   private long jwtExpiration;
-  @Value("${application.security.jwt.refresh-token.expiration}")
+  @Value("${app.security.jwt.refresh-token.expiration}")
   private long refreshExpiration;
 
   public String extractUsername(String token) {
@@ -38,7 +38,8 @@ public class JwtService {
   public String generateToken(UserDetails userDetails, User user) {
     Map<String, Object> claims = new HashMap<>();
     claims.put("id", user.getId());
-    claims.put("name", user.getName());
+    claims.put("lastName", user.getFirstName());
+    claims.put("firstName", user.getLastName());
     claims.put("email", user.getEmail());
     claims.put("role", user.getRole().getName());
 
@@ -87,14 +88,13 @@ public class JwtService {
 
   private Claims extractAllClaims(String token) {
     return Jwts
-        .parserBuilder()
-        .setSigningKey(getSignInKey())
-        .build()
-        .parseClaimsJws(token)
-        .getBody();
+            .parser()
+            .verifyWith(getSignInKey())
+            .build()
+            .parseSignedClaims(token)
+            .getPayload();
   }
-
-  private Key getSignInKey() {
+  private SecretKey getSignInKey() {
     byte[] keyBytes = Decoders.BASE64.decode(secretKey);
     return Keys.hmacShaKeyFor(keyBytes);
   }

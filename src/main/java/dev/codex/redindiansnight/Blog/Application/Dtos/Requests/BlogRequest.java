@@ -17,6 +17,6 @@ public record BlogRequest(
         String content,
 
         @NotNull
-        Long userId
+        Integer userId
 ) implements Serializable {
 }
