@@ -1,0 +1,8 @@
+{
+  "status": 404,
+  "message": "Role not found",
+  "errors": {
+    "role id": "2",
+    "message": "Role with id 2 not found"
+  }
+}

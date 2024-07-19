@@ -1,0 +1,15 @@
+{
+  "id": 2,
+  "firstName": "soussf",
+  "lastName": "souf@fla.com",
+  "email": "souf@fla.com",
+  "password": "password",
+  "role": {
+    "id": 1,
+    "name": null
+  },
+  "permissions": [],
+  "userHobbies": null,
+  "blogs": null,
+  "commentList": null
+}
