@@ -30,7 +30,8 @@ public class Blog {
     private User author;
 
     @OneToMany(mappedBy = "blog", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Comment> commentList;
+    private List<Comment> comments;
+
 
     public Blog(String title, String description, String content, User author) {
         this.title = title;
