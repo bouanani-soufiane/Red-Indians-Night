@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 public record BookingRequest(
         @NotNull
-        Long userId,
+        Integer userId,
 
         @NotNull
         Long eventId,

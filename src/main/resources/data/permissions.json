@@ -1,0 +1,246 @@
+[
+  {
+    "id": 1,
+    "name": "VIEW_USERS"
+  },
+  {
+    "id": 2,
+    "name": "CREATE_USERS"
+  },
+  {
+    "id": 3,
+    "name": "UPDATE_USERS"
+  },
+  {
+    "id": 4,
+    "name": "DELETE_USERS"
+  },
+  {
+    "id": 5,
+    "name": "VIEW_PRODUCTS"
+  },
+  {
+    "id": 6,
+    "name": "CREATE_PRODUCTS"
+  },
+  {
+    "id": 7,
+    "name": "UPDATE_PRODUCTS"
+  },
+  {
+    "id": 8,
+    "name": "DELETE_PRODUCTS"
+  },
+  {
+    "id": 9,
+    "name": "VIEW_ROLES"
+  },
+  {
+    "id": 10,
+    "name": "CREATE_ROLES"
+  },
+  {
+    "id": 11,
+    "name": "UPDATE_ROLES"
+  },
+  {
+    "id": 12,
+    "name": "DELETE_ROLES"
+  },
+  {
+    "id": 13,
+    "name": "VIEW_PERMISSIONS"
+  },
+  {
+    "id": 14,
+    "name": "CREATE_PERMISSIONS"
+  },
+  {
+    "id": 15,
+    "name": "UPDATE_PERMISSIONS"
+  },
+  {
+    "id": 16,
+    "name": "DELETE_PERMISSIONS"
+  },
+  {
+    "id": 17,
+    "name": "VIEW_DELIVERY_TYPES"
+  },
+  {
+    "id": 18,
+    "name": "CREATE_DELIVERY_TYPES"
+  },
+  {
+    "id": 19,
+    "name": "UPDATE_DELIVERY_TYPES"
+  },
+  {
+    "id": 20,
+    "name": "DELETE_DELIVERY_TYPES"
+  },
+  {
+    "id": 21,
+    "name": "VIEW_UNITS"
+  },
+  {
+    "id": 22,
+    "name": "CREATE_UNITS"
+  },
+  {
+    "id": 23,
+    "name": "UPDATE_UNITS"
+  },
+  {
+    "id": 24,
+    "name": "DELETE_UNITS"
+  },
+  {
+    "id": 25,
+    "name": "VIEW_PAYMENT_METHODS"
+  },
+  {
+    "id": 26,
+    "name": "CREATE_PAYMENT_METHODS"
+  },
+  {
+    "id": 27,
+    "name": "UPDATE_PAYMENT_METHODS"
+  },
+  {
+    "id": 28,
+    "name": "DELETE_PAYMENT_METHODS"
+  },
+  {
+    "id": 29,
+    "name": "VIEW_OFFERS"
+  },
+  {
+    "id": 30,
+    "name": "CREATE_OFFERS"
+  },
+  {
+    "id": 31,
+    "name": "UPDATE_OFFERS"
+  },
+  {
+    "id": 32,
+    "name": "DELETE_OFFERS"
+  },
+  {
+    "id": 33,
+    "name": "VIEW_PARTNERS"
+  },
+  {
+    "id": 34,
+    "name": "CREATE_PARTNERS"
+  },
+  {
+    "id": 35,
+    "name": "UPDATE_PARTNERS"
+  },
+  {
+    "id": 36,
+    "name": "DELETE_PARTNERS"
+  },
+  {
+    "id": 37,
+    "name": "VIEW_PARTNER_TYPES"
+  },
+  {
+    "id": 38,
+    "name": "CREATE_PARTNER_TYPES"
+  },
+  {
+    "id": 39,
+    "name": "UPDATE_PARTNER_TYPES"
+  },
+  {
+    "id": 40,
+    "name": "DELETE_PARTNER_TYPES"
+  },
+  {
+    "id": 41,
+    "name": "VIEW_CATEGORIES"
+  },
+  {
+    "id": 42,
+    "name": "CREATE_CATEGORIES"
+  },
+  {
+    "id": 43,
+    "name": "UPDATE_CATEGORIES"
+  },
+  {
+    "id": 44,
+    "name": "DELETE_CATEGORIES"
+  },
+  {
+    "id": 45,
+    "name": "VIEW_CITIES"
+  },
+  {
+    "id": 46,
+    "name": "CREATE_CITIES"
+  },
+  {
+    "id": 47,
+    "name": "UPDATE_CITIES"
+  },
+  {
+    "id": 48,
+    "name": "DELETE_CITIES"
+  },
+  {
+    "id": 49,
+    "name": "VIEW_COUNTRIES"
+  },
+  {
+    "id": 50,
+    "name": "CREATE_COUNTRIES"
+  },
+  {
+    "id": 51,
+    "name": "UPDATE_COUNTRIES"
+  },
+  {
+    "id": 52,
+    "name": "DELETE_COUNTRIES"
+  },
+  {
+    "id": 53,
+    "name": "VIEW_PLATFORMS"
+  },
+  {
+    "id": 54,
+    "name": "VIEW_ORDERS"
+  },
+  {
+    "id": 55,
+    "name": "CREATE_ORDERS"
+  },
+  {
+    "id": 56,
+    "name": "UPDATE_ORDERS"
+  },
+  {
+    "id": 57,
+    "name": "DELETE_ORDERS"
+  },
+  {
+    "id": 58,
+    "name": "VIEW_CARTS"
+  },
+  {
+    "id": 59,
+    "name": "CREATE_CARTS"
+  },
+  {
+    "id": 60,
+    "name": "UPDATE_CARTS"
+  },
+  {
+    "id": 61,
+    "name": "DELETE_CARTS"
+  }
+]

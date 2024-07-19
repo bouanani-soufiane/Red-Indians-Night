@@ -1,17 +1,11 @@
-package dev.codex.redindiansnight.User.Application.DTOs.Requests;
+package dev.codex.redindiansnight.User.Application.DTOs.Requests.Authentication;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
-import java.util.List;
-
-/**
- * DTO for {@link dev.codex.redindiansnight.User.Domain.Entities.User}
- */
-public record UserRequest(
+public record RegisterRequest(
         @NotBlank
         String firstName,
 
@@ -22,13 +16,11 @@ public record UserRequest(
         @Email
         String email,
 
-        @NotBlank
-        @Size(min = 6, max = 20)
+        @Size
         String password,
 
         @NotNull
-        Long roleId,
-
-        List<Long> permissionIds
-) implements Serializable {
+        Long roleId
+) {
 }
+
