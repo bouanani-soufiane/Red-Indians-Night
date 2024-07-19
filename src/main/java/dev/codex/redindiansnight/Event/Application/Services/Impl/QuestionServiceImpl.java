@@ -74,7 +74,7 @@ class QuestionServiceImpl implements QuestionService {
     @Override
     @Transactional
     public void delete(Long id) {
-        if (repository.existsById(id))
+        if (!repository.existsById(id))
             throw new QuestionNotFoundNotFoundException(id);
         repository.deleteById(id);
     }
