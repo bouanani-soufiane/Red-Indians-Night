@@ -3,6 +3,7 @@ package dev.codex.redindiansnight.User.Domain.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.codex.redindiansnight.Booking.Domain.Entities.Booking;
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class User extends AbstractEntity<Integer> implements UserDetails {
     @Id
     @GeneratedValue
     private Integer id;

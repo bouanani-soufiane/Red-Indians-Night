@@ -1,5 +1,6 @@
 package dev.codex.redindiansnight.Event.Domain.Entities;
 
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import dev.codex.redindiansnight.Event.Application.Dtos.Requests.AnswerRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "answers")
-public class Answer {
+public class Answer extends AbstractEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;

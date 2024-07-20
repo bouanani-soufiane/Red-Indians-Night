@@ -1,21 +1,20 @@
 package dev.codex.redindiansnight.User.Domain.Entities;
 
 
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import dev.codex.redindiansnight.User.Domain.ValueObjects.TokenType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Token {
+public class Token extends AbstractEntity<Integer> {
 
     @Id
     @GeneratedValue

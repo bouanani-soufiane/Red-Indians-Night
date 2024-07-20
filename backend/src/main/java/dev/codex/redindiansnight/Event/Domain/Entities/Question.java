@@ -1,6 +1,7 @@
 package dev.codex.redindiansnight.Event.Domain.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import dev.codex.redindiansnight.Event.Domain.ObjectValues.AnswerType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "questions")
-public class Question {
+public class Question extends AbstractEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;

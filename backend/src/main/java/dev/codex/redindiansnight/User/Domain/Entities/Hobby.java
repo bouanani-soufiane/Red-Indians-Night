@@ -1,6 +1,7 @@
 package dev.codex.redindiansnight.User.Domain.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "hobbies")
-public class Hobby {
+public class Hobby extends AbstractEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;

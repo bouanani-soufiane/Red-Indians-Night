@@ -1,5 +1,6 @@
 package dev.codex.redindiansnight.Blog.Domain.Entities;
 
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import dev.codex.redindiansnight.User.Domain.Entities.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "blogs")
-public class Blog {
+public class Blog extends AbstractEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;

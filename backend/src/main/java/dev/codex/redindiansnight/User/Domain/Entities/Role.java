@@ -1,5 +1,6 @@
 package dev.codex.redindiansnight.User.Domain.Entities;
 
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role extends AbstractEntity<Long> {
 
     @Id
     @GeneratedValue

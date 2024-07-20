@@ -1,6 +1,7 @@
 package dev.codex.redindiansnight.Booking.Domain.Entities;
 
 import dev.codex.redindiansnight.Booking.Domain.ObjectValues.BookingStatus;
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import dev.codex.redindiansnight.Event.Domain.Entities.Event;
 import dev.codex.redindiansnight.User.Domain.Entities.User;
 import jakarta.persistence.*;
@@ -14,7 +15,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "bookings")
-public class Booking {
+public class Booking extends AbstractEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;

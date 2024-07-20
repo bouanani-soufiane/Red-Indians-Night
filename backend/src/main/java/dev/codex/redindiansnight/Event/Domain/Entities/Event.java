@@ -1,5 +1,6 @@
 package dev.codex.redindiansnight.Event.Domain.Entities;
 
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "events")
-public class Event {
+public class Event extends AbstractEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;

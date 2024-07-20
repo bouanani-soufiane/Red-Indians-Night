@@ -1,5 +1,6 @@
 package dev.codex.redindiansnight.Blog.Domain.Entities;
 
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
 import dev.codex.redindiansnight.User.Domain.Entities.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "comments")
-public class Comment {
+public class Comment extends AbstractEntity<Long> {
     @Id
     @GeneratedValue
     private Long id;
