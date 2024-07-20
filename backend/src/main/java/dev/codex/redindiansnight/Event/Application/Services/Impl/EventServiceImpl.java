@@ -9,6 +9,9 @@ import dev.codex.redindiansnight.Event.Domain.Entities.Question;
 import dev.codex.redindiansnight.Event.Domain.Exceptions.EventNotFoundException;
 import dev.codex.redindiansnight.Event.Infrastructure.EventRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +27,12 @@ class EventServiceImpl implements EventService {
     @Override
     public List<Event> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Page<Event> findAll(int pageNum, int pageSize ) {
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
+        return repository.findAll(pageable);
     }
 
     @Override

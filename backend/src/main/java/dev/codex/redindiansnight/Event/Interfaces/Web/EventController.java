@@ -5,11 +5,10 @@ import dev.codex.redindiansnight.Event.Application.Services.EventService;
 import dev.codex.redindiansnight.Event.Domain.Entities.Event;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/events")
@@ -18,8 +17,11 @@ public class EventController {
     private final EventService service;
 
     @GetMapping
-    public ResponseEntity<List<Event>> findAll() {
-        List<Event> events = service.findAll();
+    public ResponseEntity<Page<Event>> findAll(
+            @RequestParam(defaultValue = "0") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize
+    ) {
+        Page<Event> events = service.findAll(pageNum, pageSize);
         return ResponseEntity.ok(events);
     }
 
