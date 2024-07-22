@@ -10,8 +10,8 @@ import { LoginRequest } from '../../models/login-request';
   providedIn: 'root',
 })
 export class AuthServiceService {
-  private REGISTER_URL: string = `${environement.apiUrl}auth/regiter`;
-  private LOGIN_URL: string = `${environement.apiUrl}auth/auth`;
+  private readonly REGISTER_URL: string = `${environement.apiUrl}auth/regiter`;
+  private readonly LOGIN_URL: string = `${environement.apiUrl}auth/auth`;
 
   constructor(private http: HttpClient) { }
 
