@@ -1,5 +1,4 @@
-export interface IEvent {
-  id: number;
+export interface EventRequest {
   title: string;
   description: string;
   price: number;
@@ -8,6 +7,4 @@ export interface IEvent {
   endDate: Date;
   numberOfAttendees: number;
   isLive: boolean;
-  createdAt: Date;
-  lastModifiedAt: Date;
 }
