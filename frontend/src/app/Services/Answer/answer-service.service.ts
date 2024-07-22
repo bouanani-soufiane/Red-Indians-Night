@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environement } from '../../../Environement/Environement';
+import { environement } from '../../Environement/Environement';
 import { Answer } from '../../Models/answer.model';
 import { AnswerRequest } from '../../DTOs/answer.request';
 
