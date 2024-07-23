@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -13,7 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
   }
 
@@ -35,9 +38,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     if (this.registerForm.valid)
+
       console.log("the form is valid");
-    else
+    else {
+      console.log(this.registerForm.value);
       console.log("this form is not valid");
+    }
 
   }
 }
