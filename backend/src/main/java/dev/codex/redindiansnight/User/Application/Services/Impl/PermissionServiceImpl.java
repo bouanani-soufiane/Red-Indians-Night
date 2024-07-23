@@ -1,14 +1,15 @@
 package dev.codex.redindiansnight.User.Application.Services.Impl;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import dev.codex.redindiansnight.User.Application.DTOs.Requests.PermissionRequest;
 import dev.codex.redindiansnight.User.Application.Services.PermissionService;
 import dev.codex.redindiansnight.User.Domain.Entities.Permission;
 import dev.codex.redindiansnight.User.Domain.Exceptions.PermissionNotFoundException;
 import dev.codex.redindiansnight.User.Infrastructure.PermissionRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

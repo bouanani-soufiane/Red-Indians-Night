@@ -27,6 +27,7 @@
     "@angular/cli": "^18.1.1",
     "@angular/compiler-cli": "^18.1.1",
     "@types/jasmine": "~5.1.0",
+    "autoprefixer": "^10.4.19",
     "eslint": "^9.7.0",
     "globals": "^15.8.0",
     "jasmine-core": "~5.1.0",
@@ -35,7 +36,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.4.2",
-    "typescript-eslint": "^7.16.1"
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.6",
+    "typescript": "~5.4.2"
   }
 }
