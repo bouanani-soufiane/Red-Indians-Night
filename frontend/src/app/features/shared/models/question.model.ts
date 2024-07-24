@@ -1,4 +1,4 @@
-export interface Question {
+export interface IQuestion {
   id: number;
   question: string;
   isRequired: boolean;

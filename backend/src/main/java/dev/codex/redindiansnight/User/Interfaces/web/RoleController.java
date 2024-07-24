@@ -1,15 +1,24 @@
 package dev.codex.redindiansnight.User.Interfaces.web;
 
+import java.util.List;
+
+import jakarta.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import dev.codex.redindiansnight.User.Application.DTOs.Requests.RoleRequest;
 import dev.codex.redindiansnight.User.Application.Services.RoleService;
 import dev.codex.redindiansnight.User.Domain.Entities.Role;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/roles")
@@ -27,6 +36,12 @@ public class RoleController {
     @GetMapping("/{id}")
     public ResponseEntity<Role> findById(@PathVariable Long id) {
         final Role role = roleService.findById(id);
+        return ResponseEntity.ok(role);
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<Role> findByName(@PathVariable String name) {
+        final Role role = roleService.findByName(name);
         return ResponseEntity.ok(role);
     }
 
