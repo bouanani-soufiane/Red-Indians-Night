@@ -82,7 +82,7 @@
                     </svg>
                 </span>
 
-                <input formControlName="passwordConfirmation" id="passwordConfirmation" type="password"
+                <input formControlName="confirmPassword" id="passwordConfirmation" type="password"
                     class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                     placeholder="Confirm Password">
             </div>
@@ -96,9 +96,9 @@
                     </svg>
                 </span>
 
-                <select formControlName="role" id="passwordConfirmation"
+                <select formControlName="roleId" id="passwordConfirmation"
                     class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
-                    <option value=""></option>
+                    <@for (role of roles; track role.id) { <option [value]="role.id">{{ role.name.toLocaleLowerCase() }}</option> }
                 </select>
             </div>
 

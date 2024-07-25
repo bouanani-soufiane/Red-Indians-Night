@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import dev.codex.redindiansnight.User.Application.DTOs.Requests.RoleRequest;
+import dev.codex.redindiansnight.User.Application.DTOs.Requests.Authentication.RegistrationRoleResponse;
 import dev.codex.redindiansnight.User.Application.Services.PermissionService;
 import dev.codex.redindiansnight.User.Application.Services.RoleService;
 import dev.codex.redindiansnight.User.Domain.Entities.Role;
@@ -27,6 +28,14 @@ class RoleServiceImpl implements RoleService {
     public Role findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RoleNotFoundException(id));
+    }
+
+    @Override
+    public List<RegistrationRoleResponse> getRoleForSignup() {
+        return repository.findAll()
+                .stream()
+                .map(RegistrationRoleResponse::fromRole)
+                .toList();
     }
 
     @Override

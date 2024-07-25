@@ -9,7 +9,7 @@ import { LoginRequest } from '../../../DTOs/auth/requests/login-request';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthService {
 
   private readonly baseUrl: string = `${environement.apiUrl}/auth/`;
 

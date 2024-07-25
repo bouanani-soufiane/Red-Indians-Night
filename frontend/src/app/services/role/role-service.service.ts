@@ -9,7 +9,7 @@ import { Role } from '../../models/role.model';
 })
 export class RoleService {
 
-  private readonly baseUrl: string = `${environement.apiUrl}/roles/`
+  private readonly baseUrl: string = `${environement.apiUrl}/roles`
 
   constructor(
     private http: HttpClient
@@ -19,8 +19,12 @@ export class RoleService {
     return this.http.get<Role[]>(this.baseUrl);
   }
 
+  getAllForSignup(): Observable<Role[]> {
+    return this.http.get<Role[]>(`${this.baseUrl}/signup`);
+  }
+
   getById(id: number): Observable<Role> {
-    return this.http.get<Role>(`${this.baseUrl}${id}`);
+    return this.http.get<Role>(`${this.baseUrl}/${id}`);
   }
 
   create(role: Role): Observable<Role> {
@@ -28,11 +32,10 @@ export class RoleService {
   }
 
   update(id: number, request: Role): Observable<Role> {
-    return this.http.patch<Role>(`${this.baseUrl}${id}`, request);
+    return this.http.patch<Role>(`${this.baseUrl}/${id}`, request);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
-
 }

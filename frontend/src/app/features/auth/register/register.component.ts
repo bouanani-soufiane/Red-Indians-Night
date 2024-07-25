@@ -3,13 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RoleService } from '../../../services/role/role-service.service';
 import { Role } from '../../../models/role.model';
+import { HttpClientModule } from '@angular/common/http';
+import { confirmPasswordValidator } from '../../../utils/PasswordValidator';
+import { RegisterRequest } from '../../../DTOs/auth/requests/register-request';
+import { AuthService } from '../../../core/services/auth/auth-service.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
 
@@ -18,15 +22,19 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getRoles();
   }
 
   getRoles () {
     this.roleService.getAll().subscribe(roles => {
+      console.log("roles are here ",roles);
+
       this.roles = roles;
     });
   }
@@ -40,17 +48,23 @@ export class RegisterComponent implements OnInit {
       lastName: ['', validators],
       email: ['', [...validators, email]],
       password: ['', validators],
+      confirmPassword: ['', validators],
       roleId: ["", required]
-    });
+    }, confirmPasswordValidator());
   }
 
   onSubmit(): void {
     if (this.form.invalid) {
       console.log("the form is not valid");
+      console.log(this.form.value);
       return;
     }
+    let userData: RegisterRequest = this.form.value;
 
-    console.log(this.form.value);
+    this.authService.register(userData).subscribe(response => {
+      console.log("response from the server ",response);
+    });
+
   }
 
 

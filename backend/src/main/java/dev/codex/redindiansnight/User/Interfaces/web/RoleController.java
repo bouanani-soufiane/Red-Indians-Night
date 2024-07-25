@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.codex.redindiansnight.User.Application.DTOs.Requests.RoleRequest;
+import dev.codex.redindiansnight.User.Application.DTOs.Requests.Authentication.RegistrationRoleResponse;
 import dev.codex.redindiansnight.User.Application.Services.RoleService;
 import dev.codex.redindiansnight.User.Domain.Entities.Role;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,12 @@ public class RoleController {
     @GetMapping
     public ResponseEntity<List<Role>> findAll() {
         final List<Role> roles = roleService.findAll();
+        return ResponseEntity.ok(roles);
+    }
+
+    @GetMapping("/signup")
+    public ResponseEntity<List<RegistrationRoleResponse>> findAllForSignup() {
+        final List<RegistrationRoleResponse> roles = roleService.getRoleForSignup();
         return ResponseEntity.ok(roles);
     }
 
