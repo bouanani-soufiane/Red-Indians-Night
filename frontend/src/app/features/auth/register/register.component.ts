@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RoleService } from '../../../services/role/role-service.service';
 import { Role } from '../../../models/role.model';
-import { HttpClientModule } from '@angular/common/http';
 import { confirmPasswordValidator } from '../../../utils/PasswordValidator';
 import { RegisterRequest } from '../../../DTOs/auth/requests/register-request';
-import { AuthService } from '../../../core/services/auth/auth-service.service';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -31,10 +30,8 @@ export class RegisterComponent implements OnInit {
     this.getRoles();
   }
 
-  getRoles () {
+  getRoles() {
     this.roleService.getAll().subscribe(roles => {
-      console.log("roles are here ",roles);
-
       this.roles = roles;
     });
   }
@@ -61,9 +58,7 @@ export class RegisterComponent implements OnInit {
     }
     let userData: RegisterRequest = this.form.value;
 
-    this.authService.register(userData).subscribe(response => {
-      console.log("response from the server ",response);
-    });
+    this.authService.register(userData);
 
   }
 
