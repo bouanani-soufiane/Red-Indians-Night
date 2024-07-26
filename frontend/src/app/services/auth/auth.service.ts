@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { AuthApiService } from './api/auth-api.service';
 import { TokenService } from '../token/token-service.service';
 import { Router } from '@angular/router';
-import { RegisterRequest, LoginRequest ,AuthResponse} from '../../shared/DTOs';
-import { DecodedToken } from '../../shared/models';
+import { RegisterRequest, LoginRequest ,AuthResponse} from '../../DTOs';
+import { DecodedToken } from '../../models';
 import { roleRouteMap } from '../../utils/RoutesByRoleMap';
 
 @Injectable({

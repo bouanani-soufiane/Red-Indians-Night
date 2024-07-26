@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../../../services/event/event.service';
 import { Event } from '../../../../shared/models';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-event-listing',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './event-listing.component.html',
   styleUrl: './event-listing.component.css'
 })

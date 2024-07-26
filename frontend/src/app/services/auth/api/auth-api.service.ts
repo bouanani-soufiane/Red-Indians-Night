@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environement } from '../../../environement/Environement';
-import { RegisterRequest, LoginRequest, AuthResponse } from '../../../shared/DTOs';
+import { RegisterRequest, LoginRequest, AuthResponse } from '../../../DTOs';
 
 @Injectable({
   providedIn: 'root'

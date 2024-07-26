@@ -15,15 +15,14 @@ export class AuthInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<void>> {
-    // let authToken: string = this.tokenService.getToken();
-
-    let authToken: string = this.cookieService.get("accessToken");
-
-    console.log("token ", authToken);
-
-
+    let authToken: string = this.tokenService.getToken();
+    let cookie = document.cookie.split(";");
+    console.log(cookie);;
+    
+    console.log("token: " + authToken);
+    
     if (authToken) {
-    console.log("the interceptor is working");
+    console.log("token exists");
       req = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + authToken),
       });
