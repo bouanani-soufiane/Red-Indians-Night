@@ -46,9 +46,10 @@ public class RoleController {
         return ResponseEntity.ok(role);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<Role> findByName(@PathVariable String name) {
         final Role role = roleService.findByName(name);
+        System.out.println("this is the method with name");
         return ResponseEntity.ok(role);
     }
 

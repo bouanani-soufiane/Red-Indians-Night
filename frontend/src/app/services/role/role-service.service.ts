@@ -27,6 +27,10 @@ export class RoleService {
     return this.http.get<Role>(`${this.baseUrl}/${id}`);
   }
 
+  getByName(name: string): Observable<Role> {
+    return this.http.get<Role>(`${this.baseUrl}/name/${name}`);
+  }
+
   create(role: Role): Observable<Role> {
     return this.http.post<Role>(this.baseUrl, role);
   }

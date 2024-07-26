@@ -3,14 +3,13 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtDecoderService } from '../jwtDecoder/jwt-decoder.service';
 import { AuthResponse } from '../../../DTOs/auth/responses/auth-response';
 import { CookieContent } from '../../../models/cookie-content.model';
-import { DecodedToken } from '../../../models/decoded-token.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
-  cookieContent!: CookieContent;
+  private cookieContent!: CookieContent;
 
   constructor(
     private cookieService: CookieService,
@@ -38,11 +37,15 @@ export class TokenService {
   }
 
   getUser() {
-    return this.cookieService.get("user");
+    return JSON.parse(this.cookieService.get("user"));
   }
 
   getUserId() {
     let user = JSON.parse(this.getUser());
     return user.id;
+  }
+
+  removeToken() {
+    this.cookieService.deleteAll();
   }
 }
