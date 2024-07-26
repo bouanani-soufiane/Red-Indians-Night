@@ -4,9 +4,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RoleService } from '../../../services/role/role-service.service';
 import { Role } from '../../../models/role.model';
 import { confirmPasswordValidator } from '../../../utils/PasswordValidator';
-import { RegisterRequest } from '../../../DTOs/auth/requests/register-request';
-import { AuthService } from '../../../core/services/auth/auth.service';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth/auth.service';
+import { RegisterRequest } from '../../../shared/DTOs';
 
 @Component({
   selector: 'app-register',

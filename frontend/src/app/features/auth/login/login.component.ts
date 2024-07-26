@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { confirmPasswordValidator } from '../../../utils/PasswordValidator';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Role } from '../../../models/role.model';
-import { AuthService } from '../../../core/services/auth/auth.service';
-import { RoleService } from '../../../services/role/role-service.service';
-import { LoginRequest } from '../../../DTOs/auth/requests/login-request';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth/auth.service';
+import { LoginRequest } from '../../../shared/DTOs';
 
 @Component({
   selector: 'app-login',

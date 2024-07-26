@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AuthApiService } from './api/auth-api.service';
-import { RegisterRequest } from '../../../DTOs/auth/requests/register-request';
-import { AuthResponse } from '../../../DTOs/auth/responses/auth-response';
 import { TokenService } from '../token/token-service.service';
-import { DecodedToken } from '../../../models/decoded-token.model';
 import { Router } from '@angular/router';
-import { LoginRequest } from '../../../DTOs/auth/requests/login-request';
-import { roleRouteMap } from '../../../models/role.model';
+import { RegisterRequest, LoginRequest ,AuthResponse} from '../../shared/DTOs';
+import { DecodedToken } from '../../shared/models';
+import { roleRouteMap } from '../../utils/RoutesByRoleMap';
 
 @Injectable({
   providedIn: 'root'
