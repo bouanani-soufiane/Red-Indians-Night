@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 
 export const routes: Routes = [
   {
@@ -7,7 +8,13 @@ export const routes: Routes = [
   },
   {
     path: "dashboard",
-    loadChildren: () => import("./features/administration/administration.routes").then(m => m.ADMIN_ROUTES)
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: "",
+        loadChildren: () => import("./features/administration/administration.routes").then(m => m.ADMIN_ROUTES),
+      },
+    ]
   }
 ];
 

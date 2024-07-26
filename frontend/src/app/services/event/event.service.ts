@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environement } from '../../environement/Environement';
-import { Event } from '../../shared/models';
-import { EventRequest } from '../../shared/DTOs';
+import { Event } from '../../models';
+import { EventRequest } from '../../DTOs';
 
 @Injectable({
   providedIn: 'root'

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../../../services/event/event.service';
-import { Event } from '../../../../shared/models';
+import { Event } from '../../../../models';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardLayoutComponent } from "../../../../layouts/dashboard-layout/dashboard-layout.component";
 
 @Component({
   selector: 'app-event-listing',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, DashboardLayoutComponent],
   templateUrl: './event-listing.component.html',
   styleUrl: './event-listing.component.css'
 })
