@@ -15,13 +15,8 @@ export class AuthService {
   ) { }
 
   register(request: RegisterRequest) {
-    let response: AuthResponse;
     this.authApiService.register(request).subscribe((res: AuthResponse) => {
-      response = res;
-      console.log("here is before send", res);
-      this.tokenService.extartUserInfo(res);
-      console.log("response from the server ", response);
-
+      this.tokenService.SetCookieContent(res);
     });
   }
 }
