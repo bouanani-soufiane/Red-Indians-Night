@@ -1,20 +1,33 @@
 package dev.codex.redindiansnight.User.Domain.Entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PreRemove;
+import jakarta.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.codex.redindiansnight.Booking.Domain.Entities.Booking;
-import dev.codex.redindiansnight.Common.Models.AbstractEntity;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import dev.codex.redindiansnight.Booking.Domain.Entities.Booking;
+import dev.codex.redindiansnight.Common.Models.AbstractEntity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Setter
 @Getter
@@ -36,6 +49,9 @@ public class User extends AbstractEntity<Integer> implements UserDetails {
     @Column(unique = true)
     private String email;
 
+    @Column(name = "is_verified", nullable = false)
+    private Boolean isVerified = false;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
@@ -55,13 +71,15 @@ public class User extends AbstractEntity<Integer> implements UserDetails {
     @JsonIgnore
     private List<Booking> bookings;
 
-    public User(String email, String firstName, String lastName, String password, Role role, List<Permission> permissions) {
+    public User(String email, String firstName, String lastName, String password, Role role,
+            List<Permission> permissions) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.role = role;
         this.permissions = permissions;
+        this.isVerified = false;
     }
 
     public User(String email, String firstName, String lastName, String password, Role role) {
@@ -70,6 +88,7 @@ public class User extends AbstractEntity<Integer> implements UserDetails {
         this.lastName = lastName;
         this.password = password;
         this.role = role;
+        this.isVerified = false;
     }
 
     @Override
