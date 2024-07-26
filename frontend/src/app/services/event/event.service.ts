@@ -16,8 +16,12 @@ export class EventService {
     private http: HttpClient
   ) { }
 
-  getAll(pageSize: number, pageNum: number): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.baseUrl}?pageSize=${pageSize}&pageNum=${pageNum}`);
+  getAll(): Observable<Event[]> {
+    return this.http.get<Event[]>(this.baseUrl);
+  }
+
+  paginate(pageSize: number, pageNum: number): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}?pageNum=${pageNum}&pageSize=${pageSize}`);
   }
 
   getById(id: number): Observable<Event> {

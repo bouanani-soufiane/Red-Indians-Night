@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtDecoderService } from '../jwtDecoder/jwt-decoder.service';
-import { AuthResponse } from '../../../DTOs/auth/responses/auth-response';
-import { CookieContent } from '../../../models/cookie-content.model';
+import { CookieContent } from '../../shared/models';
+import { AuthResponse } from '../../shared/DTOs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,10 @@ export class TokenService {
 
   getToken(): string {
     return this.cookieService.get("accessToken");
+  }
+
+  getTokenn(): string {
+    return this.cookieContent.accessToken;
   }
 
   getUser() {

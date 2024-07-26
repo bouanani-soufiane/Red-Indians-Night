@@ -1,12 +1,13 @@
 package dev.codex.redindiansnight.Common.Seeder;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.io.InputStream;
 import java.util.List;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class Seeder<Entity, Repository extends JpaRepository<Entity, Long>> implements CommandLineRunner {
     private final ObjectMapper objectMapper;
@@ -25,6 +26,7 @@ public abstract class Seeder<Entity, Repository extends JpaRepository<Entity, Lo
     public void run(String... args) {
         if (repository.count() == 0) {
             try (InputStream inputStream = TypeReference.class.getResourceAsStream("/data/" + fileName + ".json")) {
+                System.out.println("the file name is: " + fileName); 
                 TypeReference<List<Entity>> typeReference = new TypeReference<List<Entity>>() {
                     @Override
                     public java.lang.reflect.Type getType() {
@@ -34,7 +36,7 @@ public abstract class Seeder<Entity, Repository extends JpaRepository<Entity, Lo
                 List<Entity> entities = objectMapper.readValue(inputStream, typeReference);
                 repository.saveAll(entities);
             } catch (Exception e) {
-                System.out.println("Error occurred during migration: " + e.getMessage());
+                System.err.println("Error occurred during seeding database using commandline runner: " + e.getMessage());
                 e.printStackTrace();
             }
         }
