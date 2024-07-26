@@ -1,44 +1,35 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RoleService } from '../../../services/role/role-service.service';
-import { Role } from '../../../models/role.model';
+import { Component } from '@angular/core';
 import { confirmPasswordValidator } from '../../../utils/PasswordValidator';
-import { RegisterRequest } from '../../../DTOs/auth/requests/register-request';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Role } from '../../../models/role.model';
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { RoleService } from '../../../services/role/role-service.service';
+import { LoginRequest } from '../../../DTOs/auth/requests/login-request';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-login',
   standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
   ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent {
 
   form !: FormGroup;
-  roles: Role[] = [];
 
   constructor(
     private fb: FormBuilder,
-    private roleService: RoleService,
     private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.initializeForm();
-    this.getRoles();
-  }
-
-  getRoles() {
-    this.roleService.getAll().subscribe(roles => {
-      this.roles = roles;
-    });
   }
 
   private initializeForm(): void {
@@ -46,13 +37,9 @@ export class RegisterComponent implements OnInit {
     let validators = [required, minLength(3), maxLength(50)];
 
     this.form = this.fb.group({
-      firstName: ['', validators],
-      lastName: ['', validators],
       email: ['', [...validators, email]],
       password: ['', validators],
-      confirmPassword: ['', validators],
-      roleId: ["", required]
-    }, confirmPasswordValidator());
+    });
   }
 
   onSubmit(): void {
@@ -61,9 +48,7 @@ export class RegisterComponent implements OnInit {
       console.log(this.form.value);
       return;
     }
-    this.authService.register(this.form.value as RegisterRequest);
 
+    this.authService.login(this.form.value as LoginRequest);
   }
-
-
 }

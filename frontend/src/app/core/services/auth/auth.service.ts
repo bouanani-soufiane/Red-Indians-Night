@@ -6,8 +6,7 @@ import { TokenService } from '../token/token-service.service';
 import { DecodedToken } from '../../../models/decoded-token.model';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../../../DTOs/auth/requests/login-request';
-import { RoleService } from '../../../services/role/role-service.service';
-import { Role, roleRouteMap } from '../../../models/role.model';
+import { roleRouteMap } from '../../../models/role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,6 @@ export class AuthService {
   constructor(
     private authApiService: AuthApiService,
     private tokenService: TokenService,
-    private roleService: RoleService,
     private router: Router
   ) { }
 
@@ -46,12 +44,11 @@ export class AuthService {
   private handleAuthentication(res: AuthResponse) {
     this.tokenService.SetCookieContent(res);
     let decodedToken: DecodedToken = this.tokenService.getUser();
-
     let path: string = roleRouteMap[decodedToken.role]
-    if (path)
-      this.router.navigate([path]);
-    else
+
+    if (!path)
       console.log("the role is not defined in the roleRouteMap");
 
+    this.router.navigate([path]);
   }
 }

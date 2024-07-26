@@ -22,7 +22,7 @@ export class AuthApiService {
   }
 
   login (request: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}login`, request);
+    return this.http.post<AuthResponse>(`${this.baseUrl}authenticate`, request);
   }
 
   logout (): Observable<void> {

@@ -1,7 +1,7 @@
-import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenService } from '../services/token/token-service.service';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
     private router: Router
   ) { }
 
-  intercept(req: HttpRequest<unknown>, next: HttpHandler) {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<void>> {
     let authToken: string = this.tokenService.getToken();
 
     console.log("the interceptor is working");
@@ -20,17 +20,17 @@ export class AuthInterceptor implements HttpInterceptor {
     if (authToken) {
       req = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + authToken),
-    }
+      }
     return next.handle(req).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status == 403) {
-          console.log('403 error');
+        catchError((error: HttpErrorResponse) => {
+          if (error.status == 403) {
+            console.log('403 error');
 
-          this.tokenService.removeToken();
-          this.router.navigate(['/auth/login']);
-        }
-        return throwError(error);
-      })
-    );
+            this.tokenService.removeToken();
+            this.router.navigate(['/auth/login']);
+          }
+          return throwError(error);
+        })
+      );
+    }
   }
-}
